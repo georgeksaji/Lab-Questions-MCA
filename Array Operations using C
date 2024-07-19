@@ -1,0 +1,91 @@
+#include <stdio.h>
+int a[10], n = -1;
+void search()
+{
+  int search, temp = 0;
+  if (n == -1) {
+    printf("\nArray is empty.");
+  } else {
+    printf("\nEnter element to search: ");
+    scanf("%d", &search);
+    for (int i = 0; i <= n; i++) {
+      if (a[i] == search) {
+        printf("\nElement found at %d position.", i + 1);
+        temp++;
+      }
+    }
+    if (temp == 0) {
+      printf("\nElement not found.");
+    }
+  }
+}
+
+void delete ()
+{
+  if (n == -1) {
+    printf("\nArray is empty.");
+  } else {
+    a[n] = 0;
+    n = n - 1;
+    printf("\nLast element deleted");
+  }
+}
+
+void display()
+{
+  if (n == -1) {
+    printf("\nArray is empty.");
+  } else {
+    for (int i = 0; i <= n; i++) {
+
+      printf("%d\t", a[i]);
+    }
+  }
+}
+
+void add()
+{
+  if (n == 10) {
+    printf("\nArray is full.");
+  } else {
+    printf("\nEnter array element: ");
+    scanf("%d", &a[++n]);
+  }
+}
+
+void process()
+{
+  int op;
+  while (1) {
+    printf("\n\nChoose the operation: \n1.Add\n2.Display\n3.Delete last "
+           "element\n4.Search\n5.Exit\n");
+    scanf("%d", &op);
+    switch (op) {
+    case 1: {
+      add();
+      break;
+    }
+    case 2: {
+      display();
+      break;
+    }
+    case 3: {
+      delete ();
+      break;
+    }
+    case 4: {
+      search();
+      break;
+    }
+    case 5: {
+      return;
+    }
+    default: {
+      printf("\nInvalid operation");
+      break;
+    }
+    }
+  }
+}
+
+int main() { process(); }
